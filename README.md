@@ -6,21 +6,18 @@
 
 The application stores:
 
-- movies: id, title, description, genre, year, price, stock
-- clients: id, name
+- movies: id, title, description, genre
+- clients: id, name, pin
 
 ### The application should allow the user to
-
-- Manage movie list
-- Manage clients
-
-- Add movie list
-- Modify movie list
-- Delete movie list
 
 - Add client
 - Modify client list
 - Delete client list
+
+- Add movie list
+- Modify movie list
+- Delete movie list
 
 - Search movie
 - Search client
@@ -35,22 +32,20 @@ The application stores:
 
 ### Functionalities
 
-1. Manage movie list
-2. Manage clients
-3. Add movie list
-4. Modify movie list
-5. Delete movie list
-6. Add client list
-7. Modify client list
-8. Delete client
-9. Search movie
-10. Search client
-11. Rent movie
-12. Return movie
-13. Reports for clients who rented movies ordered by name
-14. Reports for clients who rented movies ordered by the number of rented movies
-15. Reports for the most rented movies
-16. Reports for top 30% clients who rented the most movies (client name & number of rented movies)
+1. Add client list
+2. Modify client list
+3. Delete client
+4. Add movie list
+5. Modify movie list
+6. Delete movie list
+7. Search movie
+8. Search client
+9. Rent movie
+10. Return movie
+11. Reports for clients who rented movies ordered by name
+12. Reports for clients who rented movies ordered by the number of rented movies
+13. Reports for the most rented movies
+14. Reports for top 30% clients who rented the most movies (client name & number of rented movies)
 
 I1: F1 + F2 + F3 + F4 + F5 + F6
 
