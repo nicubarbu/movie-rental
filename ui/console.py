@@ -44,14 +44,15 @@ class Console:
             print(de)
         except ValueError as ve:
             print(ve)
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
             
     def modify_client(self):
         try:
             if len(self.__client_service.get_all_clients()) == 0:
                 print("There are no clients to modify!")
             else:
+                self.print_all_clients()
                 id_client = int(input("Client ID: "))
                 new_name = input("New name: ")
                 new_pin = int(input("New pin: "))
@@ -60,20 +61,21 @@ class Console:
             print(ke)
         except ValueError as ve:
             print(ve)
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
             
     def remove_client(self):
         try:
             if len(self.__client_service.get_all_clients()) == 0:
                 print("There are no clients to modify!")
             else:
+                self.print_all_clients()
                 id_client = int(input("Client ID: "))
                 self.__client_service.remove(id_client)
         except KeyError as ke:
             print(ke)
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
             
     def add_movie(self):
         try:
@@ -86,8 +88,8 @@ class Console:
             print(de)
         except ValueError as ve:
             print(ve)
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
             
     def modify_movie(self):
         try:
@@ -103,8 +105,8 @@ class Console:
             print(ke)
         except ValueError as ve:
             print (ve)    
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
             
     def remove_movie(self):
         try:
@@ -115,8 +117,8 @@ class Console:
                 self.__movie_service.remove(id_movie)
         except KeyError as ke:
             print(ke)
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
             
     def input_client_movie(self):
         try:

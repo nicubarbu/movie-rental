@@ -20,5 +20,5 @@ class Client(Entity):
         self.__pin = pin
         
     def __str__(self):
-        return f'id: {self.get_id_entity()}, name: {self.__name}, ' \
+        return f'id: {self.get_id_entity}, name: {self.__name}, ' \
                f'pin: {self.__pin}'

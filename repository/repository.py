@@ -30,9 +30,9 @@ class Repository:
         input: entity - Entity type object
         return: -
         '''
-        if self.get_by_id(entity.get_id_entity()) is not None:
+        if self.get_by_id(entity.get_id_entity) is not None:
             raise DuplicateError("It already exists an entity having this ID!")
-        self.__entities[entity.get_id_entity()] = entity
+        self.__entities[entity.get_id_entity] = entity
         
     def modify(self, new_entity):
         '''

@@ -49,8 +49,8 @@ The application stores:
 
 I1: F1 + F2 + F3 + F4 + F5 + F6
 
-F3: F7 + F8
+I2: F7 + F8
 
-F4: F9 + F10
+F3: F9 + F10
 
-F5: F11 + F12 + F13 + F14
+F4: F11 + F12 + F13 + F14
