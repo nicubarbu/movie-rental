@@ -27,6 +27,14 @@ class Console:
         else:
             for movie in movies:
                 print(movie)
+                
+    def print_all_inputs(self):
+        inputs = self.__client_movie_service.get_all_inputs()
+        if len(inputs) == 0:
+            print("There are no active rentals!")
+        else:
+            for input in inputs:
+                print(input)
         
     def print(self, entities):
         for entity in entities:
@@ -153,22 +161,47 @@ class Console:
             print(ke)
         # except Exception as e:
         #     print(e)
-            
-    def input_client_movie(self):
+        
+    def rent_movie(self):
         try:
-            id_client_movie = int(input("Id client-movie: "))
-            id_client = int(input("Client ID: "))
-            id_movie = int(input("Movie ID: "))
-            self.__client_movie_service.add_input(id_client_movie, id_client, id_movie)
-        except DuplicateError as e:
-            print(e)
-        except KeyError as e:
-            print(e)
-            
-    def remove_input(self):
-        id_client = int(input("Client ID: "))
-        id_movie = int(input("Movie ID: "))
-        self.__client_movie_service.remove_input(id_client, id_movie)
+            if len(self.__client_service.get_all_clients()) == 0:
+                print("There are no clients available!")
+            elif len(self.__movie_service.get_all_movies()) == 0:
+                print("There are no movies available!")
+            else:
+                print("Available clients:")
+                self.print_all_clients()
+                print("Available movies:")
+                self.print_all_movies()
+                id_client_movie = int(input("Client-Movie ID: "))
+                client_name = input("Client name: ")
+                movie_title = input("Movie title: ")
+                self.__client_movie_service.add(id_client_movie, client_name, movie_title)
+        except KeyError as ke:
+            print(ke)
+        except ValueError as ve:
+            print(ve)
+        # except Exception as e:
+        #     print(e)    
+        
+    def return_movie(self):
+        try:
+            if len(self.__client_service.get_all_clients()) == 0:
+                print("There are no clients available!")
+            elif len(self.__movie_service.get_all_movies()) == 0:
+                print("There are no movies available!")
+            else:
+                print("Active rentals:")
+                self.print_all_inputs()
+                client_name = input("Client name: ")
+                movie_title = input("Movie title: ")
+                self.__client_movie_service.remove(client_name, movie_title)
+        except KeyError as ke:
+            print(ke)
+        except ValueError as ve:
+            print(ve)
+        # except Exception as e:
+        #     print(e)
         
         
     def print_menu(self):
@@ -198,6 +231,7 @@ class Console:
                             PRINT
             c. Print all clients
             m. Print all movies
+            a. Print all active rentals
             
             x. Exit
             """)
@@ -223,12 +257,18 @@ class Console:
                 self.search_client()
             elif option == '8':
                 self.search_movie()
+            elif option == '9':
+                self.rent_movie()
+            elif option == '10':
+                self.return_movie()
             elif option == 'x':
                 break
             elif option == 'c':
                 self.print_all_clients()
             elif option == 'm':  
                 self.print_all_movies()
+            elif option == 'a':
+                self.print_all_inputs()
             else:
                 print("Invalid option!")
                 self.print_menu()

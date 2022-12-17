@@ -24,6 +24,18 @@ class Repository:
             return self.__entities[id_entity]
         return None
     
+    def get_name(self, name):
+        '''
+        return entity with specific name
+        input: name - string
+        return: if True - Entity type object
+                if False - None
+        '''
+        for entity in self.__entities.values():
+            if entity.get_name == name:
+                return entity
+        return None
+    
     def add(self, entity):
         '''
         add entity to dictionary
