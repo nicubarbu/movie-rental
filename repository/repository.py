@@ -34,15 +34,16 @@ class Repository:
             raise DuplicateError("It already exists an entity having this ID!")
         self.__entities[entity.get_id_entity] = entity
         
-    def modify(self, new_entity):
+    def modify(self, entity):
         '''
         modify an entity
-        input: new_entity - Entity type object
+        input: entity - Entity type object
         return: -
         '''
-        if self.get_by_id(new_entity.get_id_entity()) is None:
-            raise KeyError("There is no entity having this ID!")
-        self.__entities[new_entity.get_id_entity()] = new_entity
+        # if self.get_by_id(entity.get_id_entity) is None:
+        #     # raise KeyError("There is no entity having this ID!")
+        #     raise KeyError("PROBLEMA REPOSITORY")
+        self.__entities[entity.get_id_entity] = entity
         
     def remove(self, id_entity):
         '''
