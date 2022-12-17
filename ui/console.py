@@ -96,6 +96,7 @@ class Console:
             if len(self.__movie_service.get_all_movies()) == 0:
                 print("There are no movies to modify!")
             else:
+                self.print_all_movies()
                 id_movie = int(input("Movie ID: "))
                 new_title = input("New title: ")
                 new_description = input("New description: ")
@@ -113,6 +114,7 @@ class Console:
             if len(self.__movie_service.get_all_movies()) == 0:
                 print("There are no movies to modify!")
             else:
+                self.print_all_movies()
                 id_movie = int(input("Movie ID: "))
                 self.__movie_service.remove(id_movie)
         except KeyError as ke:
