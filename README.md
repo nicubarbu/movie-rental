@@ -19,8 +19,8 @@ The application stores:
 - Modify movie list
 - Delete movie list
 
-- Search movie
 - Search client
+- Search movie
 
 - Rent movie
 - Return movie
