@@ -7,15 +7,19 @@ class ClientMovie(Entity):
         self.__id_client = id_client
         self.__id_movie = id_movie
         
+    @property
     def get_id_client(self):
         return self.__id_client
     
+    @property
     def get_id_movie(self):
         return self.__id_movie
     
+    @get_id_client.setter
     def set_id_client(self, id_client):
         self.__id_client = id_client
-        
+     
+    @get_id_movie.setter   
     def set_id_movie(self, id_movie):
         self.__id_movie = id_movie
         

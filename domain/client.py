@@ -7,15 +7,19 @@ class Client(Entity):
         self.__name = name
         self.__pin = pin
         
+    @property    
     def get_name(self):
         return self.__name
     
+    @property
     def get_pin(self):
         return self.__pin
     
+    @get_name.setter
     def set_name(self, name):
         self.__name = name
         
+    @get_pin.setter
     def set_pin(self, pin):
         self.__pin = pin
         
