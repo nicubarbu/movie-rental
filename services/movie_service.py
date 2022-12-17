@@ -46,7 +46,7 @@ class MovieService:
         input: id_movie - int
         return: -
         '''
-        inputs = self.client_movie_repository.get_all()
+        inputs = self.__client_movie_repository.get_all()
         for input in inputs:
             if input.get_id_movie() == id_movie:
                 self.__client_movie_repository.remove(input.get_id_entity())

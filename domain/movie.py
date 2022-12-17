@@ -27,5 +27,5 @@ class Movie(Entity):
         self.__genre = genre
         
     def __str__(self):
-        return f'id: {self.get_id_entity()}, title: {self.__title}, ' \
+        return f'id: {self.get_id_entity}, title: {self.__title}, ' \
                f'description: {self.__description}, genre: {self.__genre}'
