@@ -3,7 +3,7 @@ from domain.exceptions.duplicate_error import DuplicateError
 
 class Repository:
     def __init__(self):
-        self.__entities = {}
+        self._entities = {}
         
     def get_all(self):
         '''
@@ -11,7 +11,7 @@ class Repository:
         input: -
         return: objects list of Entity type
         '''
-        return list(self.__entities.values())
+        return list(self._entities.values())
     
     def get_by_id(self, id_entity):
         '''
@@ -20,8 +20,8 @@ class Repository:
         return: if True - Entity type object
                 if False - None
         '''
-        if id_entity in self.__entities:
-            return self.__entities[id_entity]
+        if id_entity in self._entities:
+            return self._entities[id_entity]
         return None
     
     def get_name(self, name):
@@ -31,7 +31,7 @@ class Repository:
         return: if True - Entity type object
                 if False - None
         '''
-        for entity in self.__entities.values():
+        for entity in self._entities.values():
             if entity.get_name == name:
                 return entity
         return None
@@ -44,7 +44,7 @@ class Repository:
         '''
         if self.get_by_id(entity.get_id_entity) is not None:
             raise DuplicateError("It already exists an entity having this ID!")
-        self.__entities[entity.get_id_entity] = entity
+        self._entities[entity.get_id_entity] = entity
         
     def modify(self, entity):
         '''
@@ -54,7 +54,7 @@ class Repository:
         '''
         if self.get_by_id(entity.get_id_entity) is None:
             raise KeyError("There is no entity having this ID!")
-        self.__entities[entity.get_id_entity] = entity
+        self._entities[entity.get_id_entity] = entity
         
     def remove(self, id_entity):
         '''
@@ -64,7 +64,7 @@ class Repository:
         ''' 
         if self.get_by_id(id_entity) is None:
             raise KeyError("There is no entity having this ID!")
-        self.__entities.pop(id_entity)
+        self._entities.pop(id_entity)
         
     def search(self, name):
         '''
@@ -72,7 +72,7 @@ class Repository:
         input: name - string
         return: Entity type object
         '''
-        for entity in self.__entities.values():
-            if entity.get_name() == name:
+        for entity in self._entities.values():
+            if entity.get_name == name:
                 return entity
         return None

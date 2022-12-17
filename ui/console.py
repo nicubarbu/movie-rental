@@ -203,6 +203,26 @@ class Console:
         # except Exception as e:
         #     print(e)
         
+    def order_movies_by_number_of_clients(self):
+        try:
+            if len(self.__client_service.get_all_clients()) == 0:
+                print("There are no clients available!")
+            elif len(self.__movie_service.get_all_movies()) == 0:
+                print("There are no movies available!")
+            elif len(self.__client_movie_service.get_all_inputs()) == 0:
+                print("There are no rentals!")
+            else:
+                result = self.__movie_service.order_movies_by_number_of_clients()
+                self.print(result)
+        except KeyError as ke:
+            print(ke)
+        # except Exception as e:
+        #     print(e)
+        
+        def print(self, entities):
+            for entity in entities:
+                print(entity)
+        
         
     def print_menu(self):
         print("""
@@ -261,6 +281,8 @@ class Console:
                 self.rent_movie()
             elif option == '10':
                 self.return_movie()
+            elif option == '12':
+                self.order_movies_by_number_of_clients()
             elif option == 'x':
                 break
             elif option == 'c':
