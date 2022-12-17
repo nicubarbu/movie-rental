@@ -46,8 +46,8 @@ class ClientService:
         '''
         inputs = self.__client_movie_repository.get_all()
         for input in inputs:
-            if input.get_id_client() == id_client:
-                self.__client_movie_repository.remove(input.get_id_entity())
+            if input.get_id_client == id_client:
+                self.__client_movie_repository.remove(input.get_id_entity)
         self.__client_repository.remove(id_client)
         
     def search(self, name):
@@ -59,7 +59,7 @@ class ClientService:
         clients = self.__client_repository.get_all()
         clients_found = []
         for client in clients:
-            if name in client.get_name():
+            if name in client.get_name:
                 clients_found.append(client)
         return clients_found
     

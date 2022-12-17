@@ -80,10 +80,10 @@ class Console:
     def add_movie(self):
         try:
             id_movie = int(input("Movie ID: "))
-            title = input("Title: ")
+            name = input("Title: ")
             description = input("Description: ")
             genre = input("Genre: ")
-            self.__movie_service.add(id_movie, title, description, genre)
+            self.__movie_service.add(id_movie, name, description, genre)
         except DuplicateError as de:
             print(de)
         except ValueError as ve:
@@ -98,10 +98,10 @@ class Console:
             else:
                 self.print_all_movies()
                 id_movie = int(input("Movie ID: "))
-                new_title = input("New title: ")
+                new_name = input("New title: ")
                 new_description = input("New description: ")
                 new_genre = input("New genre: ")
-                self.__movie_service.modify(id_movie, new_title, new_description, new_genre)
+                self.__movie_service.modify(id_movie, new_name, new_description, new_genre)
         except KeyError as ke:
             print(ke)
         except ValueError as ve:
@@ -133,6 +133,22 @@ class Console:
                     print("No clients found!")
                 else:
                     self.print(clients)
+        except KeyError as ke:
+            print(ke)
+        # except Exception as e:
+        #     print(e)
+        
+    def search_movie(self):
+        try:
+            if len(self.__movie_service.get_all_movies()) == 0:
+                print("There are no movies to search!")
+            else:
+                name = input("Movie title: ")
+                movies = self.__movie_service.search(name)
+                if len(movies) == 0:
+                    print("No movies found!")
+                else:
+                    self.print(movies)
         except KeyError as ke:
             print(ke)
         # except Exception as e:
@@ -205,8 +221,8 @@ class Console:
                 self.remove_movie()
             elif option == '7':
                 self.search_client()
-            # elif option == '8':
-            #     self.search_movie()
+            elif option == '8':
+                self.search_movie()
             elif option == 'x':
                 break
             elif option == 'c':
