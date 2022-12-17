@@ -34,9 +34,9 @@ class Console:
         
     def add_client(self):
         try:
-            id_client = input("Client ID: ")
+            id_client = int(input("Client ID: "))
             name = input("Client name: ")
-            pin = input("Client PIN: ")
+            pin = int(input("Client PIN: "))
             self.__client_service.add(id_client, name, pin)
         except KeyError as ke:
             print(ke)
