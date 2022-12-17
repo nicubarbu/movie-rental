@@ -40,9 +40,8 @@ class Repository:
         input: entity - Entity type object
         return: -
         '''
-        # if self.get_by_id(entity.get_id_entity) is None:
-        #     # raise KeyError("There is no entity having this ID!")
-        #     raise KeyError("PROBLEMA REPOSITORY")
+        if self.get_by_id(entity.get_id_entity) is None:
+            raise KeyError("There is no entity having this ID!")
         self.__entities[entity.get_id_entity] = entity
         
     def remove(self, id_entity):
