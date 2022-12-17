@@ -54,3 +54,14 @@ class Repository:
         if self.get_by_id(id_entity) is None:
             raise KeyError("There is no entity having this ID!")
         self.__entities.pop(id_entity)
+        
+    def search(self, name):
+        '''
+        search an entity by name
+        input: name - string
+        return: Entity type object
+        '''
+        for entity in self.__entities.values():
+            if entity.get_name() == name:
+                return entity
+        return None

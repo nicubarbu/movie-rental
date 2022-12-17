@@ -121,6 +121,22 @@ class Console:
             print(ke)
         # except Exception as e:
         #     print(e)
+        
+    def search_client(self):
+        try:
+            if len(self.__client_service.get_all_clients()) == 0:
+                print("There are no clients to search!")
+            else:
+                name = input("Client name: ")
+                clients = self.__client_service.search(name)
+                if len(clients) == 0:
+                    print("No clients found!")
+                else:
+                    self.print(clients)
+        except KeyError as ke:
+            print(ke)
+        # except Exception as e:
+        #     print(e)
             
     def input_client_movie(self):
         try:
@@ -150,8 +166,8 @@ class Console:
             6. Delete movie
             
                             SEARCH
-            7. Search movie
-            8. Search client
+            7. Search client
+            8. Search movie
             
                             RENTAL & RETURN
             9. Rent movie
@@ -187,6 +203,10 @@ class Console:
                 self.modify_movie()
             elif option == '6':
                 self.remove_movie()
+            elif option == '7':
+                self.search_client()
+            # elif option == '8':
+            #     self.search_movie()
             elif option == 'x':
                 break
             elif option == 'c':
