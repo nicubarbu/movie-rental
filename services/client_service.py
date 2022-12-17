@@ -21,31 +21,32 @@ class ClientService:
         add a client
         input: id_client - int
                name - string
-        return: -
+               pin - string
+        output: -
         '''
         client = Client(id_client, name, pin)
         self.__client_repository.add(client)
         
     def modify(self, id_client, new_name, new_pin):
         '''
-        modify a client by ID
+        modify a client
         input: id_client - int
                new_name - string
-               new_pin - int
-        return: -
+               new_pin - string
+        output: -
         '''
-        new_client = Client(id_client, new_name, new_pin)
-        self.__client_repository.modify(new_client)
+        client = Client(id_client, new_name, new_pin)
+        self.__client_repository.modify(client)
         
     def remove(self, id_client):
         '''
-        remove a client by ID
+        remove a client
         input: id_client - int
         return: -
         '''
-        clients = self.__client_movie_repository.get_all()
-        for client in clients:
-            if client.get_id_client() == id_client:
-                self.__client_movie_repository.remove(client.get_id_entity())
-        self.__client_repository.pop(id_client)
+        inputs = self.__client_movie_repository.get_all()
+        for input in inputs:
+            if input.get_id_client() == id_client:
+                self.__client_movie_repository.remove(input.get_id_entity())
+        self.__client_repository.remove(id_client)
     
