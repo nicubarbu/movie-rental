@@ -3,12 +3,10 @@ from repository.file_repository import FileClientRepository, FileMovieRepository
 from services.client_service import ClientService
 from services.client_movie_service import ClientMovieService
 from services.movie_service import MovieService
-from tests.tests import test_all
 from ui.console import Console
 
 
 def main():
-    test_all()
 
     client_file_repository = FileClientRepository("clients.txt")
     movie_file_repository = FileMovieRepository("movies.txt")
