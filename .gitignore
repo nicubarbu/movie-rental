@@ -130,3 +130,7 @@ dmypy.json
 *.xml
 *.iml
 *.txt
+garbage/client/test_client.py
+garbage/client/test_client_repository.py
+garbage/movie/test_movie.py
+garbage/tests.py
