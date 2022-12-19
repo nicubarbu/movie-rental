@@ -1,5 +1,4 @@
 from domain.client import Client
-from domain.movie import Movie
 from repository.repository import Repository
 
 
@@ -26,9 +25,10 @@ class FileClientRepository(Repository):
             with open(self.__file_name, 'r') as f:
                 lines = f.readlines()
                 for line in lines:
-                    id_client = line.split()[0]
-                    name = line.split()[1]
-                    pin = line.split()[2]
+                    parts = line.split()
+                    id_client = parts[0]
+                    name = parts[1]
+                    pin = parts[2]
                     client = Client(int(id_client), name, pin)
                     self._entities[client.get_pin] = client
         except IOError:

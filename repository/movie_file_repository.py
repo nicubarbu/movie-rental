@@ -25,10 +25,11 @@ class FileMovieRepository(Repository):
             with open(self.__file_name, 'r') as f:
                 lines = f.readlines()
                 for line in lines:
-                    id_movie = line.split()[0]
-                    title = line.split()[1]
-                    description = line.split()[2]
-                    genre = line.split()[3]
+                    parts = line.split()
+                    id_movie = parts[0]
+                    title = parts[1]
+                    description = parts[2]
+                    genre = parts[3]
                     movie = Movie(int(id_movie), title, description, genre)
                     self._entities[movie.get_id_entity] = movie
         except IOError:
@@ -37,5 +38,5 @@ class FileMovieRepository(Repository):
     def __write_file(self):
         with open(self.__file_name, 'w') as f:
             for movie in self.get_all():
-                f.write(f'{movie.get_id_entity} {movie.get_title} {movie.get_description} {movie.get_genre}')
+                f.write(f'{movie.get_id_entity} {movie.get_name} {movie.get_description} {movie.get_genre}')
                 
