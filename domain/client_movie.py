@@ -25,5 +25,6 @@ class ClientMovie(Entity):
         
     def __str__(self):
         return f'id: {self.get_id_entity}, ' \
-               f'id client: {self.__id_client}, ' \
-               f'id movie: {self.__id_movie}'
+               f'client name: {self.__id_client}, ' \
+               f'movie title: {self.__id_movie}'
+    
