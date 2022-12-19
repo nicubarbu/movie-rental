@@ -1,37 +1,17 @@
 # Movie Rental
 
-## author: Nicușor-Lucian Barbu
+@author: Nicușor-Lucian Barbu
+
+@email: contact.nicubarbu@gmail.com
 
 ### Write an application for a **Movie Rental Agency**
+
 
 The application stores:
 
 - movies: id, title, description, genre
 - clients: id, name, pin
 
-### The application should allow the user to
-
-- Add client
-- Modify client list
-- Delete client list
-
-- Add movie list
-- Modify movie list
-- Delete movie list
-
-- Search client
-- Search movie
-
-- Rent movie
-- Return movie
-
-- Print clients list
-- Print movies list
-- Print rented movies list
-
-- Reports for clients ordered by the number of rented movies
-- Reports for the most rented movies
-- Reports for top 30% clients who rented the most movies (client name & number of rented movies)
 
 ### Functionalities
 
