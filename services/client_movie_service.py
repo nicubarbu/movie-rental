@@ -20,27 +20,12 @@ class ClientMovieService:
         
         inputs = self.__client_movie_repository.get_all()
         for input in inputs:
-            if input.get_client_name == client_name and \
-                input.get_movie_title == movie_title:
+            if input.get_name == client_name and \
+                input.get_name == movie_title:
                 raise DuplicateError("The client has already rented this movie!")
         
         input = ClientMovie(id_client_movie, client_name, movie_title)
         self.__client_movie_repository.add(input)
-        
-    # def add(self, id_client_movie, id_client, id_movie):
-    #     if self.__client_repository.get_by_id(id_client) is None:
-    #         raise KeyError("There is no client having this ID!")
-    #     if self.__movie_repository.get_by_id(id_movie) is None:
-    #         raise KeyError("There is no movie having this ID!")
-        
-    #     inputs = self.__client_movie_repository.get_all()
-    #     for input in inputs:
-    #         if input.get_id_client == id_client and \
-    #             input.get_id_movie == id_movie:
-    #             raise DuplicateError("The client has already rented this movie!")
-                
-    #     input = ClientMovie(id_client_movie, id_client, id_movie)
-    #     self.__client_movie_repository.add(input)
         
     def get_all_inputs(self):
         return self.__client_movie_repository.get_all()
@@ -52,4 +37,3 @@ class ClientMovieService:
                 input.get_id_movie == id_movie:
                 self.__client_movie_repository.remove(input.get_id_entity)
                     
-            
