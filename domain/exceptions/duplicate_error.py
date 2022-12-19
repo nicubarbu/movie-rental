@@ -4,3 +4,4 @@ class DuplicateError(Exception):
         
     def __str__(self):
         return f'DuplicateError: {self.__input}'
+    

@@ -4,3 +4,4 @@ class NameNotFoundError(Exception):
         
     def __str__(self):
         return f'NameNotFound: {self.__input}'
+    
