@@ -1,5 +1,6 @@
 from repository.repository import Repository
-from repository.file_repository import FileClientRepository, FileMovieRepository
+from repository.client_file_repository import FileClientRepository
+from repository.movie_file_repository import FileMovieRepository
 from services.client_service import ClientService
 from services.client_movie_service import ClientMovieService
 from services.movie_service import MovieService
