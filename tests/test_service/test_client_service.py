@@ -1,6 +1,7 @@
 from repository.repository import Repository
 from services.client_service import ClientService
 from domain.exceptions.duplicate_error import DuplicateError
+from domain.exceptions.name_not_found_error import NameNotFoundError
 import unittest
 
 
@@ -57,4 +58,7 @@ class TestClientService(unittest.TestCase):
         client_service.add(2, "Nick", "12345")
         client_service.add(3, "Mike", "123456")
         self.assertTrue(client_service.search("Nick"))
+        with self.assertRaises(NameNotFoundError):
+            client_service.search("Nick2")
+        
         
