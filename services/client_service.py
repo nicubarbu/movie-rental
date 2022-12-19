@@ -16,6 +16,14 @@ class ClientService:
         '''
         return self.__client_repository.get_all()
     
+    def get_by_id(self, id_client):
+        '''
+        return a client by id
+        input: id_client - int
+        return: Client type object
+        '''
+        return self.__client_repository.get_by_id(id_client)
+    
     def add(self, id_client, name, pin):
         '''
         add a client
@@ -44,10 +52,10 @@ class ClientService:
         input: id_client - int
         return: -
         '''
-        inputs = self.__client_movie_repository.get_all()
-        for input in inputs:
-            if input.get_id_client == id_client:
-                self.__client_movie_repository.remove(input.get_id_entity)
+        # inputs = self.__client_movie_repository.get_all()
+        # for input in inputs:
+        #     if input.get_id_client == id_client:
+        #         self.__client_movie_repository.remove(input.get_id_entity)
         self.__client_repository.remove(id_client)
         
     def search(self, name):
