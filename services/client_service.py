@@ -1,5 +1,6 @@
 from domain.client import Client
 from repository.repository import Repository
+from domain.exceptions.name_not_found_error import NameNotFoundError
 
 
 class ClientService:
@@ -69,5 +70,7 @@ class ClientService:
         for client in clients:
             if name in client.get_name:
                 clients_found.append(client)
+        if len(clients_found) == 0:
+            raise NameNotFoundError(f'There is no client named {name}!')
         return clients_found
     
