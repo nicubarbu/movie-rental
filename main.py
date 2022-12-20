@@ -1,4 +1,3 @@
-from repository.repository import Repository
 from repository.client_file_repository import FileClientRepository
 from repository.movie_file_repository import FileMovieRepository
 from repository.client_movie_file_repository import FileClientMovieRepository
