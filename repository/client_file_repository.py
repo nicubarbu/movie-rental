@@ -39,4 +39,3 @@ class FileClientRepository(Repository):
             for client in self.get_all():
                 f.write(f'{client.get_id_entity} {client.get_name} {client.get_pin}')
                 
-    
