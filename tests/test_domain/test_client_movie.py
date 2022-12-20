@@ -20,5 +20,5 @@ class TestClientMovie(unittest.TestCase):
         self.assertTrue(self.client_movie.get_id_movie == 3)
         
     def test_string(self):
-        self.assertEqual(str(self.client_movie), 'id: 1, client name: 1, movie title: 1')
+        self.assertEqual(str(self.client_movie), 'id: 1, client id: 1, movie id: 1')
         
