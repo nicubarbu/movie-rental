@@ -1,16 +1,22 @@
 from domain.exceptions.duplicate_error import DuplicateError
 from services.client_service import ClientService
-from services.client_movie_service import ClientMovieService
+from services.client_movie_service import RentService
 from services.movie_service import MovieService
+from services.reports import ReportsService
+import json
 
 
 class Console:
-    def __init__(self, client_service: ClientService,
-               movie_service: MovieService,
-               client_movie_service: ClientMovieService):
+    def __init__(self,
+                 client_service: ClientService,
+                 movie_service: MovieService,
+                 client_movie_service: RentService,
+                 reports: ReportsService
+                 ):
         self.__client_service = client_service
         self.__client_movie_service = client_movie_service
         self.__movie_service = movie_service
+        self.__reports = reports
         
     def print_all_clients(self):
         clients = self.__client_service.get_all_clients()
@@ -52,8 +58,8 @@ class Console:
             print(de)
         except ValueError as ve:
             print(ve)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
             
     def modify_client(self):
         try:
@@ -69,8 +75,8 @@ class Console:
             print(ke)
         except ValueError as ve:
             print(ve)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
             
     def remove_client(self):
         try:
@@ -82,8 +88,8 @@ class Console:
                 self.__client_service.remove(id_client)
         except KeyError as ke:
             print(ke)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
             
     def add_movie(self):
         try:
@@ -96,8 +102,8 @@ class Console:
             print(de)
         except ValueError as ve:
             print(ve)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
             
     def modify_movie(self):
         try:
@@ -114,8 +120,8 @@ class Console:
             print(ke)
         except ValueError as ve:
             print (ve)    
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
             
     def remove_movie(self):
         try:
@@ -127,8 +133,8 @@ class Console:
                 self.__movie_service.remove(id_movie)
         except KeyError as ke:
             print(ke)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
         
     def search_client(self):
         try:
@@ -143,8 +149,8 @@ class Console:
                     self.print(clients)
         except KeyError as ke:
             print(ke)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
         
     def search_movie(self):
         try:
@@ -159,8 +165,8 @@ class Console:
                     self.print(movies)
         except KeyError as ke:
             print(ke)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
         
     def rent_movie(self):
         try:
@@ -171,18 +177,20 @@ class Console:
             else:
                 print("Available clients:")
                 self.print_all_clients()
-                print("Available movies:")
+                print("\nAvailable movies:")
                 self.print_all_movies()
+                print("\nCurrent rentals:")
+                self.print_all_inputs()
                 id_client_movie = int(input("Client-Movie ID: "))
-                client_name = input("Client name: ")
-                movie_title = input("Movie title: ")
-                self.__client_movie_service.add(id_client_movie, client_name, movie_title)
+                id_client = int(input("Client ID: "))
+                id_movie = int(input("Movie ID: "))
+                self.__client_movie_service.add(id_client_movie, id_client, id_movie)
         except KeyError as ke:
             print(ke)
         except ValueError as ve:
             print(ve)
-        # except Exception as e:
-        #     print(e)    
+        except Exception as e:
+            print(e)    
         
     def return_movie(self):
         try:
@@ -200,28 +208,54 @@ class Console:
             print(ke)
         except ValueError as ve:
             print(ve)
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
         
-    def order_movies_by_number_of_clients(self):
+    def print_reports_client_movie_by_number_of_movies(self):
         try:
             if len(self.__client_service.get_all_clients()) == 0:
                 print("There are no clients available!")
             elif len(self.__movie_service.get_all_movies()) == 0:
                 print("There are no movies available!")
-            elif len(self.__client_movie_service.get_all_inputs()) == 0:
-                print("There are no rentals!")
             else:
-                result = self.__movie_service.order_movies_by_number_of_clients()
-                self.print(result)
+                clients = self.__reports.reports_client_movie_by_number_of_movies()
+                print(json.dumps(clients, indent=2))
         except KeyError as ke:
             print(ke)
-        # except Exception as e:
-        #     print(e)
+        except ValueError as ve:
+            print(ve)
+        except Exception as e:
+            print(e)
         
-        def print(self, entities):
-            for entity in entities:
-                print(entity)
+    def print_reports_the_most_rented_movies(self):
+        try:
+            if len(self.__movie_service.get_all_movies()) == 0:
+                print("There are no movies available!")
+            else:
+                movies = self.__reports.reports_the_most_rented_movies()
+                print(json.dumps(movies, indent=2))
+        except KeyError as ke:
+            print(ke)
+        except ValueError as ve:
+            print(ve)
+        except Exception as e:
+            print(e)        
+        
+    def print_reports_top_30_clients(self):
+        try:
+            if len(self.__client_service.get_all_clients()) == 0:
+                print("There are no clients available!")
+            elif len(self.__movie_service.get_all_movies()) == 0:
+                print("There are no movies available!")
+            else:
+                clients = self.__reports.reports_top_30_clients()
+                print(json.dumps(clients, indent=2))
+        except KeyError as ke:
+            print(ke)
+        except ValueError as ve:
+            print(ve)
+        except Exception as e:
+            print(e)
         
         
     def print_menu(self):
@@ -243,10 +277,9 @@ class Console:
             10. Return movie
             
                             REPORTS
-            11. Reports for clients who rented movies ordered by name
-            12. Reports for clients who rented movies ordered by the number of rented movies
-            13. Reports for the most rented movies
-            14. Reports for top 30% clients who rented the most movies
+            11. Reports for clients who rented movies ordered by the number of rented movies
+            12. Reports for the most rented movies
+            13. Reports for top 30% clients who rented the most movies
             
                             PRINT
             c. Print all clients
@@ -281,8 +314,12 @@ class Console:
                 self.rent_movie()
             elif option == '10':
                 self.return_movie()
+            elif option == '11':
+                self.print_reports_client_movie_by_number_of_movies()
             elif option == '12':
-                self.order_movies_by_number_of_clients()
+                self.print_reports_the_most_rented_movies()
+            elif option == '13':
+                self.print_reports_top_30_clients()
             elif option == 'x':
                 break
             elif option == 'c':
