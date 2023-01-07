@@ -31,12 +31,12 @@ class FileMovieRepository(Repository):
                     description = parts[2]
                     genre = parts[3]
                     movie = Movie(int(id_movie), title, description, genre)
-                    self._entities[movie.get_id_entity] = movie
+                    self._entities[movie.id_entity] = movie
         except IOError:
             raise IOError("File could not be opened!")
         
     def __write_file(self):
         with open(self.__file_name, 'w') as f:
             for movie in self.get_all():
-                f.write(f'{movie.get_id_entity} {movie.get_name} {movie.get_description} {movie.get_genre}')
+                f.write(f'{movie.id_entity} {movie.name} {movie.description} {movie.genre}')
                 

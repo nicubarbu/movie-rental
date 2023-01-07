@@ -37,5 +37,5 @@ class FileClientRepository(Repository):
     def __write_file(self):
         with open(self.__file_name, 'w') as f:
             for client in self.get_all():
-                f.write(f'{client.get_id_entity} {client.get_name} {client.get_pin}')
+                f.write(f'{client.id_entity} {client.name} {client.pin}')
                 

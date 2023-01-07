@@ -52,10 +52,6 @@ class MovieService:
         input: id_movie - int
         return: -
         '''
-        # inputs = self.__client_movie_repository.get_all()
-        # for input in inputs:
-        #     if input.get_id_movie == id_movie:
-        #         self.__client_movie_repository.remove(input.get_id_entity)
         self.__movie_repository.remove(id_movie)
 
     def search(self, name):
@@ -67,6 +63,6 @@ class MovieService:
         movies = self.__movie_repository.get_all()
         movies_found = []
         for movie in movies:
-            if name in movie.get_name:
+            if name in movie.name:
                 movies_found.append(movie)
         return movies_found

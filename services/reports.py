@@ -17,7 +17,7 @@ class ReportsService:
             for line in lines:
                 parts = line.split()
                 id_client = parts[1]
-                client_name = self.__client_service.get_by_id(int(id_client)).get_name
+                client_name = self.__client_service.get_by_id(int(id_client)).name
                 if client_name in clients:
                     clients[client_name] += 1
                 else:
@@ -32,7 +32,7 @@ class ReportsService:
             for line in lines:
                 parts = line.split()
                 id_movie = parts[2]
-                movie_name = self.__movie_service.get_by_id(int(id_movie)).get_name
+                movie_name = self.__movie_service.get_by_id(int(id_movie)).name
                 if movie_name in movies:
                     movies[movie_name] += 1
                 else:
@@ -48,7 +48,7 @@ class ReportsService:
             for line in lines:
                 parts = line.split()
                 id_client = parts[1]
-                client_name = self.__client_service.get_by_id(int(id_client)).get_name
+                client_name = self.__client_service.get_by_id(int(id_client)).name
                 if client_name in clients:
                     clients[client_name] += 1
                 else:

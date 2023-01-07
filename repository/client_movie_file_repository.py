@@ -30,12 +30,12 @@ class FileClientMovieRepository(Repository):
                     id_client = parts[1]
                     id_movie = parts[2]
                     client_movie = ClientMovie(int(id_client_movie), int(id_client), int(id_movie))
-                    self._entities[client_movie.get_id_entity] = client_movie
+                    self._entities[client_movie.id_entity] = client_movie
         except IOError:
             raise IOError("File could not be opened!")
                     
     def __write_file(self):
         with open(self.__file_name, 'w') as f:
             for entity in self.get_all():
-                f.write(f'{entity.get_id_entity} {entity.get_id_client} {entity.get_id_movie}')
+                f.write(f'{entity.id_entity} {entity.id_client} {entity.id_movie}')
                 

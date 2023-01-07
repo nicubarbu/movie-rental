@@ -331,5 +331,4 @@ class Console:
             else:
                 print("Invalid option!")
                 self.print_menu()
-                option = int(option)
             

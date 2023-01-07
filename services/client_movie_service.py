@@ -11,8 +11,8 @@ class RentService:
     def add(self, id_client_movie, id_client, id_movie):
         inputs = self.__client_movie_repository.get_all()
         for input in inputs:
-            if input.get_id_client == id_client and \
-                input.get_id_movie == id_movie:
+            if input.id_client == id_client and \
+                input.id_movie == id_movie:
                 raise DuplicateError("The client has already rented this movie!")
         
         input = ClientMovie(id_client_movie, id_client, id_movie)
@@ -24,7 +24,7 @@ class RentService:
     def remove(self, id_client, id_movie):
         inputs = self.__client_movie_repository.get_all()
         for input in inputs:
-            if input.get_id_client == id_client and \
-                input.get_id_movie == id_movie:
-                self.__client_movie_repository.remove(input.get_id_entity)
+            if input.id_client == id_client and \
+                input.id_movie == id_movie:
+                self.__client_movie_repository.remove(input.id_entity)
                     

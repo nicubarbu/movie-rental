@@ -32,7 +32,7 @@ class Repository:
                 if False - None
         '''
         for entity in self._entities.values():
-            if entity.get_name == name:
+            if entity.name == name:
                 return entity
         return None
     
@@ -42,9 +42,9 @@ class Repository:
         input: entity - Entity type object
         return: -
         '''
-        if self.get_by_id(entity.get_id_entity) is not None:
+        if self.get_by_id(entity.id_entity) is not None:
             raise DuplicateError("It already exists an entity having this ID!")
-        self._entities[entity.get_id_entity] = entity
+        self._entities[entity.id_entity] = entity
         
     def modify(self, entity):
         '''
@@ -52,9 +52,9 @@ class Repository:
         input: entity - Entity type object
         return: -
         '''
-        if self.get_by_id(entity.get_id_entity) is None:
+        if self.get_by_id(entity.id_entity) is None:
             raise KeyError("There is no entity having this ID!")
-        self._entities[entity.get_id_entity] = entity
+        self._entities[entity.id_entity] = entity
         
     def remove(self, id_entity):
         '''
@@ -73,6 +73,6 @@ class Repository:
         return: Entity type object
         '''
         for entity in self._entities.values():
-            if entity.get_name == name:
+            if entity.name == name:
                 return entity
         return None

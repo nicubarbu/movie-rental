@@ -51,10 +51,6 @@ class ClientService:
         input: id_client - int
         return: -
         '''
-        # inputs = self.__client_movie_repository.get_all()
-        # for input in inputs:
-        #     if input.get_id_client == id_client:
-        #         self.__client_movie_repository.remove(input.get_id_entity)
         self.__client_repository.remove(id_client)
         
     def search(self, name):
@@ -66,7 +62,7 @@ class ClientService:
         clients = self.__client_repository.get_all()
         clients_found = []
         for client in clients:
-            if name in client.get_name:
+            if name in client.name:
                 clients_found.append(client)
         if len(clients_found) == 0:
             raise NameNotFoundError(f'There is no client named {name}!')
