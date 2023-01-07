@@ -30,7 +30,7 @@ class FileClientRepository(Repository):
                     name = parts[1]
                     pin = parts[2]
                     client = Client(int(id_client), name, pin)
-                    self._entities[client.get_pin] = client
+                    super().add(client)
         except IOError:
             raise IOError("File could not be opened!")
         

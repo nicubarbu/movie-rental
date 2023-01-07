@@ -4,10 +4,8 @@ from domain.exceptions.name_not_found_error import NameNotFoundError
 
 
 class ClientService:
-    def __init__(self, client_repository: Repository,
-                 client_movie_repository: Repository):
+    def __init__(self, client_repository: Repository):
         self.__client_repository = client_repository
-        self.__client_movie_repository = client_movie_repository
         
     def get_all_clients(self):
         '''
