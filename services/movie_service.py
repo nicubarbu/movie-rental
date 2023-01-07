@@ -3,10 +3,8 @@ from repository.repository import Repository
 
 
 class MovieService:
-    def __init__(self, movie_repository: Repository,
-                 client_movie_repository: Repository):
+    def __init__(self, movie_repository: Repository):
         self.__movie_repository = movie_repository
-        self.__client_movie_repository = client_movie_repository
 
     def get_all_movies(self):
         '''
@@ -72,43 +70,3 @@ class MovieService:
             if name in movie.get_name:
                 movies_found.append(movie)
         return movies_found
-
-    # def order_movies_by_number_of_clients(self):
-    #     '''
-    #     order movies by client name
-    #     input: -
-    #     return: Movie type objects list
-    #     '''
-    #     number_of_clients_that_rented = {}
-    #     inputs = self.__client_movie_repository.get_all()
-    #     for input in inputs:
-    #         if input.get_name_movie in number_of_clients_that_rented:
-    #             number_of_clients_that_rented[input.get_name_movie] += 1
-    #         else:
-    #             number_of_clients_that_rented[input.get_name_movie] = 1
-
-    #     alphabetically_sorted_movies = sorted(number_of_clients_that_rented,
-    #                                           key=lambda name: number_of_clients_that_rented[name])
-    #     sorted_movies = []
-    #     for movie_title in alphabetically_sorted_movies:
-    #         sorted_movies.append((movie_title, number_of_clients_that_rented[movie_title]))
-    #     return sorted_movies
-
-    # def order_movies_by_clients(self):
-    #     '''
-    #     order movies by clients number
-    #     input: -
-    #     return: Movie type objects list
-    #     '''
-    #     movies = self.__movie_repository.get_all()
-    #     movies_ordered = []
-    #     for movie in movies:
-    #         clients = self.__client_movie_repository.get_all()
-    #         clients_number = 0
-    #         for client in clients:
-    #             if movie.get_id_entity == client.get_id_movie:
-    #                 clients_number += 1
-    #         movie.set_clients_number(clients_number)
-    #         movies_ordered.append(movie)
-    #     movies_ordered.sort(key=lambda x: x.get_clients_number, reverse=True)
-    #     return movies_ordered
