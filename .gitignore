@@ -135,3 +135,4 @@ garbage/client/test_client_repository.py
 garbage/movie/test_movie.py
 garbage/tests.py
 .vscode/settings.json
+.DS_Store
