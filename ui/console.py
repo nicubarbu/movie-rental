@@ -201,9 +201,10 @@ class Console:
             else:
                 print("Active rentals:")
                 self.print_all_inputs()
-                client_name = input("Client name: ")
-                movie_title = input("Movie title: ")
-                self.__client_movie_service.remove(client_name, movie_title)
+                id_rent = input("Rent ID: ")
+                # id_client = int(input("Client ID: "))
+                # id_movie = int(input("Movie ID: "))
+                self.__client_movie_service.remove(id_rent)
         except KeyError as ke:
             print(ke)
         except ValueError as ve:
