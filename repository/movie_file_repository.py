@@ -38,5 +38,5 @@ class FileMovieRepository(Repository):
     def __write_file(self):
         with open(self.__file_name, 'w') as f:
             for movie in self.get_all():
-                f.write(f'{movie.id_entity} {movie.name} {movie.description} {movie.genre}')
+                f.write(f'{movie.id_entity} {movie.name} {movie.description} {movie.genre} \n')
                 

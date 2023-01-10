@@ -37,5 +37,5 @@ class FileClientMovieRepository(Repository):
     def __write_file(self):
         with open(self.__file_name, 'w') as f:
             for entity in self.get_all():
-                f.write(f'{entity.id_entity} {entity.id_client} {entity.id_movie}')
+                f.write(f'{entity.id_entity} {entity.id_client} {entity.id_movie} \n')
                 
