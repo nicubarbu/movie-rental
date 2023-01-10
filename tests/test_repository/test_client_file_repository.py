@@ -28,8 +28,8 @@ class TestFileClientRepository(unittest.TestCase):
         repo.modify(Client(1, 'name2', 'pin2'))
         with self.assertRaises(KeyError):
             repo.modify(Client(2, 'name2', 'pin2'))
-        self.assertEqual(repo.get_all()[0].get_name, 'name2')
-        self.assertEqual(repo.get_all()[0].get_pin, 'pin2')
+        self.assertEqual(repo.get_all()[0].name, 'name2')
+        self.assertEqual(repo.get_all()[0].pin, 'pin2')
         
     def test_remove(self):
         repo = FileClientRepository(TESTDATA_FILENAME)
@@ -42,7 +42,7 @@ class TestFileClientRepository(unittest.TestCase):
         self.testfile = open(TESTDATA_FILENAME)
         self.testdata = self.testfile.read()
         repo = FileClientRepository(TESTDATA_FILENAME)
-        self.assertEqual(repo.get_all()[0].get_name, 'nicu')
+        self.assertEqual(repo.get_all()[0].name, 'nicu')
 
     def test_not_exists(self):
         try:

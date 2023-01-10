@@ -28,9 +28,9 @@ class TestFileMovieRepository(unittest.TestCase):
         repo.modify(Movie(1, 'Thor2', 'description2', 'genre2'))
         with self.assertRaises(KeyError):
             repo.modify(Movie(2, 'Thor2', 'description2', 'genre2'))
-        self.assertEqual(repo.get_all()[0].get_name, 'Thor2')
-        self.assertEqual(repo.get_all()[0].get_description, 'description2')
-        self.assertEqual(repo.get_all()[0].get_genre, 'genre2')
+        self.assertEqual(repo.get_all()[0].name, 'Thor2')
+        self.assertEqual(repo.get_all()[0].description, 'description2')
+        self.assertEqual(repo.get_all()[0].genre, 'genre2')
         
     def test_remove(self):
         repo = FileMovieRepository(TESTDATA_FILENAME)
@@ -43,7 +43,7 @@ class TestFileMovieRepository(unittest.TestCase):
         self.testfile = open(TESTDATA_FILENAME)
         self.testdata = self.testfile.read()
         repo = FileMovieRepository(TESTDATA_FILENAME)
-        self.assertEqual(repo.get_all()[1].get_name, 'Thor')
+        self.assertEqual(repo.get_all()[1].name, 'Thor')
         
     def test_not_exists(self):
         try:

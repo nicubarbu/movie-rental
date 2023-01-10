@@ -21,8 +21,8 @@ class TestRepository(unittest.TestCase):
         repo.modify(Client(1, 'name2', 'pin2'))
         with self.assertRaises(KeyError):
             repo.modify(Client(2, 'name2', 'pin2'))
-        self.assertEqual(repo.get_all()[0].get_name, 'name2')
-        self.assertEqual(repo.get_all()[0].get_pin, 'pin2')
+        self.assertEqual(repo.get_all()[0].name, 'name2')
+        self.assertEqual(repo.get_all()[0].pin, 'pin2')
         
     def test_remove(self):
         repo = Repository()
