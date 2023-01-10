@@ -8,12 +8,12 @@ import unittest
 class TestClientService(unittest.TestCase):
     def setUp(self):
         self.client_repository = Repository()
-        self.client_movie_repository = Repository()
-        self.client_service = ClientService(self.client_repository, self.client_movie_repository)
+        # self.client_movie_repository = Repository()
+        self.client_service = ClientService(self.client_repository)
 
     def test_get_all_clients(self):
         client_repository = Repository()
-        client_service = ClientService(client_repository, self.client_movie_repository)
+        client_service = ClientService(client_repository)
         client_service.add(1, "John", "1234")
         client_service.add(2, "Nick", "12345")
         clients_list = client_service.get_all_clients()
@@ -21,7 +21,7 @@ class TestClientService(unittest.TestCase):
 
     def test_add(self):
         client_repository = Repository()
-        client_service = ClientService(client_repository, self.client_movie_repository)
+        client_service = ClientService(client_repository)
         client_service.add(1, "John", "1234")
         client_service.add(2, "Nick", "12345")
         client_service.add(3, "Mike", "123456")
@@ -32,7 +32,7 @@ class TestClientService(unittest.TestCase):
         
     def test_modify(self):
         client_repository = Repository()
-        client_service = ClientService(client_repository, self.client_movie_repository)
+        client_service = ClientService(client_repository)
         client_service.add(1, "John", "1234")
         client_service.modify(1, "Nick", "12345")
         client = client_service.get_by_id(1)
@@ -41,7 +41,7 @@ class TestClientService(unittest.TestCase):
         
     def test_remove(self):
         client_repository = Repository()
-        client_service = ClientService(client_repository, self.client_movie_repository)
+        client_service = ClientService(client_repository)
         client_service.add(1, "John", "1234")
         client_service.add(2, "Nick", "12345")
         client_service.add(3, "Mike", "123456")
@@ -53,7 +53,7 @@ class TestClientService(unittest.TestCase):
         
     def test_search(self):
         client_repository = Repository()
-        client_service = ClientService(client_repository, self.client_movie_repository)
+        client_service = ClientService(client_repository)
         client_service.add(1, "John", "1234")
         client_service.add(2, "Nick", "12345")
         client_service.add(3, "Mike", "123456")

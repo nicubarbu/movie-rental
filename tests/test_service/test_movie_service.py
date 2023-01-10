@@ -8,11 +8,11 @@ class TestMovieService(unittest.TestCase):
     def setUp(self):
         self.movie_repository = Repository()
         self.client_movie_repository = Repository()
-        self.movie_service = MovieService(self.movie_repository, self.client_movie_repository)
+        self.movie_service = MovieService(self.movie_repository)
         
     def test_get_all_movies(self):
         movie_repository = Repository()
-        movie_service = MovieService(movie_repository, self.client_movie_repository)
+        movie_service = MovieService(movie_repository)
         movie_service.add(1, "John Wick", "description1", "Action")
         movie_service.add(2, "The Matrix", "description2","Sci-Fi")
         movies_list = movie_service.get_all_movies()
@@ -20,7 +20,7 @@ class TestMovieService(unittest.TestCase):
         
     def test_add(self):
         movie_repository = Repository()
-        movie_service = MovieService(movie_repository, self.client_movie_repository)
+        movie_service = MovieService(movie_repository)
         movie_service.add(1, "John Wick", "description1", "Action")
         movie_service.add(2, "The Matrix", "description2","Sci-Fi")
         movie_service.add(3, "The Avengers", "description3","Action")
@@ -31,17 +31,17 @@ class TestMovieService(unittest.TestCase):
         
     def test_modify(self):
         movie_repository = Repository()
-        movie_service = MovieService(movie_repository, self.client_movie_repository)
+        movie_service = MovieService(movie_repository)
         movie_service.add(1, "John Wick", "description1", "Action")
         movie_service.modify(1, "The Matrix", "description2","Sci-Fi")
         movie = movie_service.get_by_id(1)
-        self.assertEqual(movie.get_name, "The Matrix")
-        self.assertEqual(movie.get_description, "description2")
-        self.assertEqual(movie.get_genre, "Sci-Fi")
+        self.assertEqual(movie.name, "The Matrix")
+        self.assertEqual(movie.description, "description2")
+        self.assertEqual(movie.genre, "Sci-Fi")
         
     def test_remove(self):
         movie_repository = Repository()
-        movie_service = MovieService(movie_repository, self.client_movie_repository)
+        movie_service = MovieService(movie_repository)
         movie_service.add(1, "John Wick", "description1", "Action")
         movie_service.add(2, "The Matrix", "description2","Sci-Fi")
         movie_service.add(3, "The Avengers", "description3","Action")
@@ -53,13 +53,13 @@ class TestMovieService(unittest.TestCase):
         
     def test_search(self):
         movie_repository = Repository()
-        movie_service = MovieService(movie_repository, self.client_movie_repository)
+        movie_service = MovieService(movie_repository)
         movie_service.add(1, "John Wick", "description1", "Action")
         movie_service.add(2, "The Matrix", "description2","Sci-Fi")
         movie_service.add(3, "The Avengers", "description3","Action")
         movies_list = movie_service.search("John Wick")
         self.assertEqual(len(movies_list), 1)
-        self.assertEqual(movies_list[0].get_name, "John Wick")
-        self.assertEqual(movies_list[0].get_description, "description1")
-        self.assertEqual(movies_list[0].get_genre, "Action")
+        self.assertEqual(movies_list[0].name, "John Wick")
+        self.assertEqual(movies_list[0].description, "description1")
+        self.assertEqual(movies_list[0].genre, "Action")
         

@@ -24,17 +24,17 @@ class Repository:
             return self._entities[id_entity]
         return None
     
-    def get_name(self, name):
-        '''
-        return entity with specific name
-        input: name - string
-        return: if True - Entity type object
-                if False - None
-        '''
-        for entity in self._entities.values():
-            if entity.name == name:
-                return entity
-        return None
+    # def get_name(self, name):
+    #     '''
+    #     return entity with specific name
+    #     input: name - string
+    #     return: if True - Entity type object
+    #             if False - None
+    #     '''
+    #     for entity in self._entities.values():
+    #         if entity.name == name:
+    #             return entity
+    #     return None
     
     def add(self, entity):
         '''
