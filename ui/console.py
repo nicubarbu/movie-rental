@@ -220,7 +220,8 @@ class Console:
                 print("There are no movies available!")
             else:
                 clients = self.__reports.reports_client_movie_by_number_of_movies()
-                print(json.dumps(clients, indent=2))
+                # print(json.dumps(clients, indent=2))
+                print (clients)
         except KeyError as ke:
             print(ke)
         except ValueError as ve:

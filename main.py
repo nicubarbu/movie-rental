@@ -17,7 +17,7 @@ def main():
     client_service = ClientService(client_file_repository)
     movie_service = MovieService(movie_file_repository)
     client_movie_service = RentService(client_movie_file_repository)
-    reports = ReportsService(client_service, movie_service)
+    reports = ReportsService(client_service, movie_service, client_movie_service)
     
     console = Console(client_service, movie_service, client_movie_service, reports)
     console.menu()
